@@ -158,8 +158,10 @@ function processContains(item, list, callback) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+function processDuplicateFree(list, callback) {
+  return callback(list.filter((a,b) => {
+    return list.indexOf(a) === b;
+  }))
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -201,11 +203,7 @@ function getFullNames(runners) {
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
 function firstNamesAllCaps(runners) {
-  let array = [];
-  runners.map((runner) => {
-    array.push(`${runner.first_name.toUpperCase()}`);
-  });
-  return array;
+  return runners.map(runner => `${runner.first_name.toUpperCase()}`);
 }
 
 /**
@@ -265,9 +263,9 @@ function tallyUpDonations(runners) {
 */
 function counterMaker() {
   // BROKEN CODE STARTS
-  const count = 0;
-  function counter() {
-    ++count
+  let count = 0;
+  return function counter() {
+    return count++;
   }
   // BROKEN CODE ENDS
 }
@@ -292,8 +290,16 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
-  /* CODE HERE */
+function counterMakerWithLimit(maxValue) {
+  let count = 0;
+  return function counter() {
+    if (count > maxValue) {
+      count = 0;
+      return count++;
+    } else {
+      return count++;
+    }
+  }
 }
 
 /////////////// END OF CHALLENGE ///////////////
