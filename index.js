@@ -180,8 +180,12 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
-  /* CODE HERE */
+function getFullNames(runners) {
+  let array = [];
+  runners.forEach((runner) => {
+    array.push(`${runner.last_name}, ${runner.first_name}`);
+  });
+  return array;
 }
 
 /**
@@ -196,8 +200,12 @@ function getFullNames(/* CODE HERE */) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
-  /* CODE HERE */
+function firstNamesAllCaps(runners) {
+  let array = [];
+  runners.map((runner) => {
+    array.push(`${runner.first_name.toUpperCase()}`);
+  });
+  return array;
 }
 
 /**
@@ -213,8 +221,14 @@ function firstNamesAllCaps(/* CODE HERE */) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
-  /* CODE HERE */
+function getRunnersByTShirtSize(runners, tShirtSize) {
+  let array = [];
+  runners.filter((runner) => {
+    if (runner.shirt_size === tShirtSize) {
+      array.push(runner);
+    }
+  });
+  return array;
 }
 
 /**
